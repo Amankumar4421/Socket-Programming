@@ -1,0 +1,16 @@
+import socket
+server = socket.socket()
+server.bind(("localhost",9999))
+server.listen()
+while True:
+    print("Server is listening...")
+    conn, addr = server.accept()
+    print("connected with ",addr)
+    file = open("recv.txt",'w')
+    data = conn.recv(1024).decode()
+    print("Receiving the file data.")
+    file.write(data)
+    conn.send("File data received".encode())
+    file.close()
+    conn.close()
+    print("disconnected with ",addr)

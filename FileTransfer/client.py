@@ -1,0 +1,11 @@
+import socket
+client = socket.socket()
+client.connect(("localhost",9999))
+file = open("aman.txt", "r")
+data = file.read()
+print("File data sending...")
+client.send(data.encode())
+msg = client.recv(1024).decode()
+print("From Server : ",msg)
+file.close()
+client.close()
