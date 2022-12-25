@@ -8,5 +8,5 @@ while True:
     data, addr = c_socket.recvfrom(1024)
     print("The Ip Address is : ",data.decode('utf-8'))
     if input("Continue?(y/n)")=='n':
-        break;
+        break
 c_socket.close()
